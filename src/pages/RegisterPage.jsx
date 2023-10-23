@@ -7,15 +7,11 @@ const RegisterPage = () => {
     <Box
       sx={{
         boxShadow: 1,
-        width: '100%',
-        maxWidth: 400,
-        height: 'auto',
+        width: 400,
+        mt: 15,
         p: 2,
         borderRadius: 1,
-        position: 'fixed',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%,-50%)',
+        mx: 'auto',
         textAlign: 'center',
       }}
     >
