@@ -1,23 +1,42 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { StyledFilterLabel } from './Filter.styled';
 import { selectFilter } from 'redux/contacts/selectors';
 import { setFilter } from 'redux/contacts/filterSlice';
-
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import InputAdornment from '@mui/material/InputAdornment';
 
 export const Filter = () => {
   const dispatch = useDispatch();
   const filter = useSelector(selectFilter);
 
   return (
-    <StyledFilterLabel>
-      Find contacts by name
-      <input
-        type="text"
-        name="filter"
-        title="Find contacts by name"
-        onChange={e => dispatch(setFilter(e.target.value))}
-        value={filter}
-      />
-    </StyledFilterLabel>
+    <Box sx={{width: 400, mx: 'auto'}}>
+        {/* <input
+          type="text"
+          name="filter"
+          title="Find contacts by name"
+          onChange={e => dispatch(setFilter(e.target.value))}
+          value={filter}
+        /> */}
+        <TextField
+          fullWidth
+          id="filter"
+          name="filter"
+          type='text'
+          title="Find contacts by name"
+          label="Find contacts by name"
+          onChange={e => dispatch(setFilter(e.target.value))}
+          value={filter}
+
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <FilterListIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+    </Box>
   );
 };

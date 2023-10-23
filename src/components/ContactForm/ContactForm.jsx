@@ -1,15 +1,14 @@
-import { Formik, ErrorMessage } from 'formik';
+import { useFormik } from 'formik';
 import * as yup from 'yup';
-import {
-  StyledFormContacts,
-  StyledFormButton,
-  StyledFromLabel,
-  StyledErrorText,
-  StyledInput,
-} from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/contactOperations';
+import InputAdornment from '@mui/material/InputAdornment';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import AddIcCallIcon from '@mui/icons-material/AddIcCall';
+import PhoneIcon from '@mui/icons-material/Phone';
+import Box from '@mui/material/Box';
 
 const schema = yup.object().shape({
   name: yup
@@ -28,15 +27,6 @@ const schema = yup.object().shape({
     .required(),
 });
 
-const FormError = ({ name }) => {
-  return (
-    <ErrorMessage
-      name={name}
-      render={message => <StyledErrorText>{message}</StyledErrorText>}
-    />
-  );
-};
-
 export const ContactForm = () => {
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
@@ -51,27 +41,61 @@ export const ContactForm = () => {
     resetForm();
   };
 
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      number: '',
+    },
+    validationSchema: schema,
+    onSubmit: handleSubmit,
+  });
+
   return (
-    <Formik
-      initialValues={{ name: '', number: '' }}
-      onSubmit={handleSubmit}
-      validationSchema={schema}
-    >
-      <StyledFormContacts autoComplete="off">
-        <StyledFromLabel>
-          <span>Name</span>
-          <StyledInput type="text" name="name" />
-          <FormError name="name" />
-        </StyledFromLabel>
-
-        <StyledFromLabel>
-          <span>Number</span>
-          <StyledInput type="tel" name="number" />
-          <FormError name="number" />
-        </StyledFromLabel>
-
-        <StyledFormButton type="submit">Add contact</StyledFormButton>
-      </StyledFormContacts>
-    </Formik>
+    <Box sx={{width: 600, p: 4, border: '1px solid #1976D2', borderRadius: 2}}>
+      <form onSubmit={formik.handleSubmit} autoComplete="off">
+        <TextField
+          fullWidth
+          sx={{ mb: 4 }}
+          id="name"
+          name="name"
+          label="name"
+          value={formik.values.name}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.name && Boolean(formik.errors.name)}
+          helperText={formik.touched.name && formik.errors.name}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <AddIcCallIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+        <TextField
+          fullWidth
+          sx={{ mb: 4 }}
+          id="number"
+          name="number"
+          label="number"
+          type="tel"
+          value={formik.values.number}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.number && Boolean(formik.errors.number)}
+          helperText={formik.touched.number && formik.errors.number}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <PhoneIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+        <Button color="primary" variant="contained" fullWidth type="submit">
+          Add contact
+        </Button>
+      </form>
+    </Box>
   );
 };
