@@ -29,7 +29,9 @@ export const App = () => {
         <Routes>
           <Route
             path="/"
-            element={<PrivateRoute redirectTo='/login' component={<ContactsPage />} />}
+            element={
+              <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+            }
           />
           <Route
             path="/contacts"

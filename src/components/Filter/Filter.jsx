@@ -11,32 +11,24 @@ export const Filter = () => {
   const filter = useSelector(selectFilter);
 
   return (
-    <Box sx={{width: 400, mx: 'auto'}}>
-        {/* <input
-          type="text"
-          name="filter"
-          title="Find contacts by name"
-          onChange={e => dispatch(setFilter(e.target.value))}
-          value={filter}
-        /> */}
-        <TextField
-          fullWidth
-          id="filter"
-          name="filter"
-          type='text'
-          title="Find contacts by name"
-          label="Find contacts by name"
-          onChange={e => dispatch(setFilter(e.target.value))}
-          value={filter}
-
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <FilterListIcon />
-              </InputAdornment>
-            ),
-          }}
-        />
+    <Box sx={{ width: 400, mx: 'auto' }}>
+      <TextField
+        fullWidth
+        id="filter"
+        name="filter"
+        type="text"
+        title="Find contacts by name"
+        label="Find contacts by name"
+        onChange={e => dispatch(setFilter(e.target.value))}
+        value={filter}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <FilterListIcon />
+            </InputAdornment>
+          ),
+        }}
+      />
     </Box>
   );
 };

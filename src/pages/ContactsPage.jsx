@@ -14,7 +14,7 @@ const ContactsPage = () => {
   }, [dispatch]);
 
   return (
-    <Box sx={{width: 600, mx: 'auto', textAlign: 'center'}}>
+    <Box sx={{ width: 600, mx: 'auto', textAlign: 'center' }}>
       <h1>Phonebook</h1>
       <ContactForm />
 

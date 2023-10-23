@@ -51,7 +51,9 @@ export const ContactForm = () => {
   });
 
   return (
-    <Box sx={{width: 600, p: 4, border: '1px solid #1976D2', borderRadius: 2}}>
+    <Box
+      sx={{ width: 600, p: 4, border: '1px solid #1976D2', borderRadius: 2 }}
+    >
       <form onSubmit={formik.handleSubmit} autoComplete="off">
         <TextField
           fullWidth

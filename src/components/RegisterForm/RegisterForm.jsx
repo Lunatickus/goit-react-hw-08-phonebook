@@ -46,7 +46,7 @@ export const RegisterForm = () => {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit} autoComplete='off'>
+    <form onSubmit={formik.handleSubmit} autoComplete="off">
       <TextField
         fullWidth
         sx={{ mb: 2 }}

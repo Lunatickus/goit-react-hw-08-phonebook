@@ -6,7 +6,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import AppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
-import PhoneIcon from '@mui/icons-material/Phone';
+import ContactsIcon from '@mui/icons-material/Contacts';
 import Toolbar from '@mui/material/Toolbar';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import LoginIcon from '@mui/icons-material/Login';
@@ -44,7 +44,7 @@ export const Navigation = () => {
               gap: 1,
             }}
           >
-            <PhoneIcon fontSize="small" />
+            <ContactsIcon fontSize="small" />
             Contacts
           </Typography>
 
