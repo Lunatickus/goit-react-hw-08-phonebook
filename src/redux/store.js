@@ -12,7 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { filterReducer } from './contacts/filterSlice';
 import { contactsReducer } from './contacts/contactsSlice';
-import { authReducer } from './auth/slice';
+import { authReducer } from './auth/authSlice';
 
 const authPersistConfig = {
   key: 'auth',

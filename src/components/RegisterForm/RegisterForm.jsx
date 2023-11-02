@@ -1,7 +1,7 @@
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { register } from 'redux/auth/operations';
+import { register } from 'redux/auth/authOperations';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import EmailIcon from '@mui/icons-material/Email';

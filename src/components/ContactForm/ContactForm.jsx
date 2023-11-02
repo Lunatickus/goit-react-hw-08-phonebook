@@ -1,7 +1,7 @@
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/contacts/selectors';
+import { selectContacts } from 'redux/contacts/contacts.selectors';
 import { addContact } from 'redux/contacts/contactOperations';
 import InputAdornment from '@mui/material/InputAdornment';
 import Button from '@mui/material/Button';
