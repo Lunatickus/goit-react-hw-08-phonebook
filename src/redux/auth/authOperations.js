@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toastError, toastSuccess } from 'services/toastNotifications';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
@@ -22,8 +23,10 @@ export const register = createAsyncThunk(
       const res = await axios.post('/users/signup', credentials);
       // const res = await authInstance.post('/users/signup', credentials);
       setAuthHeader(res.data.token);
+      toastSuccess('Registration successful');
       return res.data;
     } catch (error) {
+      toastError('user already exist');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -36,8 +39,10 @@ export const logIn = createAsyncThunk(
       const res = await axios.post('/users/login', credentials);
       // const res = await authInstance.post('/users/login', credentials);
       setAuthHeader(res.data.token);
+      toastSuccess(`Welcome ${credentials.email}`);
       return res.data;
     } catch (error) {
+      toastError('Such user does not exist');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
